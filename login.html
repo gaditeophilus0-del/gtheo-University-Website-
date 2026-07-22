@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portal Login — GTheo University</title>
+<meta name="description" content="Log in to the GTheo University Student, Staff or Alumni Portal.">
+<link rel="stylesheet" href="styles/styles-responsive.css">
+</head>
+<body class="login-body">
+
+<!-- ============ MINIMAL TOP BAR ============ -->
+<div class="login-topbar">
+  <div class="wrap login-topbar-inner">
+    <a href="index.html" class="brand">
+      <svg class="brand-seal" viewBox="0 0 64 64" aria-hidden="true">
+        <circle cx="32" cy="32" r="30" fill="none" stroke="#ff8000" stroke-width="2"/>
+        <circle cx="32" cy="32" r="24" fill="none" stroke="#c9a961" stroke-width="1"/>
+        <path d="M32 18 L46 25 L32 32 L18 25 Z" fill="#ff8000"/>
+        <path d="M22 27 V35 Q32 41 42 35 V27" fill="none" stroke="#ffffff" stroke-width="1.6"/>
+        <line x1="46" y1="25" x2="46" y2="33" stroke="#ffffff" stroke-width="1.6"/>
+      </svg>
+      <span class="brand-text">GTheo University<span>KAMPALA · EST. 2010</span></span>
+    </a>
+    <a href="index.html" class="login-back">← Back to website</a>
+  </div>
+</div>
+
+<!-- ============ SPLIT LOGIN LAYOUT ============ -->
+<main class="login-shell">
+
+  <!-- LEFT: brand panel -->
+  <section class="login-side">
+    <img class="login-side-bg" src="image/gtheo_scholars.jpg" alt="">
+    <div class="login-side-overlay"></div>
+    <svg class="hero-seal-mark" viewBox="0 0 64 64" aria-hidden="true">
+      <circle cx="32" cy="32" r="30" fill="none" stroke="#fff" stroke-width="1.4"/>
+      <circle cx="32" cy="32" r="24" fill="none" stroke="#fff" stroke-width="1"/>
+      <path d="M32 18 L46 25 L32 32 L18 25 Z" fill="#fff"/>
+    </svg>
+    <div class="login-side-content">
+      <span class="eyebrow" style="color:#ff8000;">The Portal</span>
+      <h1>Results, fees, materials and messages — the moment they're posted.</h1>
+      <ul class="login-side-list">
+        <li>Check results and register for courses each semester</li>
+        <li>View and pay your fee balance securely</li>
+        <li>Download lecture notes and staff announcements</li>
+      </ul>
+      <p class="login-side-quote">"I never once had to queue at the registrar's office — everything I needed was in the portal."<br><span>— Nakato Patricia, BSc. Computer Science</span></p>
+    </div>
+  </section>
+
+  <!-- RIGHT: login form -->
+  <section class="login-form-side">
+    <div class="login-form-wrap">
+
+      <div class="role-tabs" role="tablist" aria-label="Portal type">
+        <button class="role-tab active" data-role="student" role="tab" aria-selected="true">Student</button>
+        <button class="role-tab" data-role="staff" role="tab" aria-selected="false">Staff</button>
+        <button class="role-tab" data-role="alumni" role="tab" aria-selected="false">Alumni</button>
+      </div>
+
+      <h2 class="login-title" id="loginTitle">Student Portal Login</h2>
+      <p class="login-sub" id="loginSub">Enter your student ID and password to access your dashboard.</p>
+
+      <form id="loginForm" class="login-form" novalidate>
+        <div class="field">
+          <label for="loginId" id="loginIdLabel">Student ID or email *</label>
+          <input type="text" id="loginId" name="loginId" required autocomplete="username">
+        </div>
+        <div class="field">
+          <label for="loginPass">Password *</label>
+          <div class="password-wrap">
+            <input type="password" id="loginPass" name="loginPass" required autocomplete="current-password">
+            <button type="button" class="password-toggle" id="passwordToggle" aria-label="Show password">
+              <svg viewBox="0 0 24 24"><path d="M12 5c-5 0-9.3 3.1-11 7 1.7 3.9 6 7 11 7s9.3-3.1 11-7c-1.7-3.9-6-7-11-7zm0 11.5A4.5 4.5 0 1 1 12 7.5a4.5 4.5 0 0 1 0 9zm0-7.2a2.7 2.7 0 1 0 0 5.4 2.7 2.7 0 0 0 0-5.4z"/></svg>
+            </button>
+          </div>
+        </div>
+        <div class="login-row">
+          <label class="radio-opt"><input type="checkbox" id="rememberMe"> Remember me</label>
+          <a href="#" id="forgotLink" class="login-forgot">Forgot password?</a>
+        </div>
+        <button type="submit" class="btn btn-orange btn-lg" style="width:100%;justify-content:center;">Log In →</button>
+      </form>
+
+      <div class="login-notice" id="loginNotice" hidden>
+        <strong>This is a design preview.</strong> The live student information system isn't connected yet — once GTheo's backend is hosted, this form will authenticate real accounts. For account help right now, email
+        <a href="mailto:gaditeophilus0@gmail.com">gaditeophilus0@gmail.com</a>.
+      </div>
+
+      <p class="login-apply-note" id="loginApplyNote">New applicant? <a href="application.html">Apply for admission</a> to receive your student ID.</p>
+    </div>
+  </section>
+</main>
+
+<script>
+// Role tab switching
+const roleCopy = {
+  student: { title: 'Student Portal Login', sub: 'Enter your student ID and password to access your dashboard.', idLabel: 'Student ID or email *', apply: 'New applicant? <a href="application.html">Apply for admission</a> to receive your student ID.' },
+  staff:   { title: 'Staff Portal Login', sub: 'Enter your staff ID and password to manage courses and records.', idLabel: 'Staff ID or email *', apply: 'Need staff access? Contact IT support at <a href="mailto:gaditeophilus0@gmail.com">gaditeophilus0@gmail.com</a>.' },
+  alumni:  { title: 'Alumni Portal Login', sub: 'Log in to update your profile, connect with classmates and give back.', idLabel: 'Alumni ID or email *', apply: 'Haven\'t registered yet? <a href="alumni-login.html">Create your alumni profile</a>.' },
+  };
+document.querySelectorAll('.role-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.role-tab').forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
+    tab.classList.add('active');
+    tab.setAttribute('aria-selected','true');
+    const role = roleCopy[tab.dataset.role];
+    document.getElementById('loginTitle').textContent = role.title;
+    document.getElementById('loginSub').textContent = role.sub;
+    document.getElementById('loginIdLabel').textContent = role.idLabel;
+    document.getElementById('loginApplyNote').innerHTML = role.apply;
+  });
+});
+
+// Password show/hide
+const passInput = document.getElementById('loginPass');
+document.getElementById('passwordToggle').addEventListener('click', function(){
+  const isPass = passInput.type === 'password';
+  passInput.type = isPass ? 'text' : 'password';
+  this.setAttribute('aria-label', isPass ? 'Hide password' : 'Show password');
+});
+
+// Preview-mode submit notice (no live backend yet)
+document.getElementById('loginForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  document.getElementById('loginNotice').hidden = false;
+  document.getElementById('loginNotice').scrollIntoView({ behavior:'smooth', block:'nearest' });
+});
+document.getElementById('forgotLink').addEventListener('click', function(e){
+  e.preventDefault();
+  document.getElementById('loginNotice').hidden = false;
+});
+</script>
+
+</body>
+</html>

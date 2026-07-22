@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alumni Portal Login — GTheo University</title>
+<meta name="description" content="Log in or register for the GTheo University Alumni Portal.">
+<link rel="stylesheet" href="styles/styles-responsive.css">
+</head>
+<body class="login-body">
+
+<!-- ============ MINIMAL TOP BAR ============ -->
+<div class="login-topbar">
+  <div class="wrap login-topbar-inner">
+    <a href="index.html" class="brand">
+      <svg class="brand-seal" viewBox="0 0 64 64" aria-hidden="true">
+        <circle cx="32" cy="32" r="30" fill="none" stroke="#ff8000" stroke-width="2"/>
+        <circle cx="32" cy="32" r="24" fill="none" stroke="#c9a961" stroke-width="1"/>
+        <path d="M32 18 L46 25 L32 32 L18 25 Z" fill="#ff8000"/>
+        <path d="M22 27 V35 Q32 41 42 35 V27" fill="none" stroke="#ffffff" stroke-width="1.6"/>
+        <line x1="46" y1="25" x2="46" y2="33" stroke="#ffffff" stroke-width="1.6"/>
+      </svg>
+      <span class="brand-text">GTheo University<span>KAMPALA · EST. 2010</span></span>
+    </a>
+    <a href="index.html" class="login-back">← Back to website</a>
+  </div>
+</div>
+
+<!-- ============ SPLIT LOGIN LAYOUT ============ -->
+<main class="login-shell">
+
+  <!-- LEFT: brand panel -->
+  <section class="login-side">
+    <img class="login-side-bg" src="https://picsum.photos/seed/gtheo-alumni-login/1000/1200" alt="">
+    <div class="login-side-overlay"></div>
+    <svg class="hero-seal-mark" viewBox="0 0 64 64" aria-hidden="true">
+      <circle cx="32" cy="32" r="30" fill="none" stroke="#fff" stroke-width="1.4"/>
+      <circle cx="32" cy="32" r="24" fill="none" stroke="#fff" stroke-width="1"/>
+      <path d="M32 18 L46 25 L32 32 L18 25 Z" fill="#fff"/>
+    </svg>
+    <div class="login-side-content">
+      <span class="eyebrow" style="color:#ff8000;">The Alumni Portal</span>
+      <h1>Once a GTheo student, always part of the network.</h1>
+      <ul class="login-side-list">
+        <li>Update your profile and career details</li>
+        <li>RSVP to reunions and alumni events</li>
+        <li>Browse the alumni job board and post openings</li>
+        <li>Give back through the donation portal</li>
+      </ul>
+      <p class="login-side-quote">"Ten years out, the alumni network is still where I find my best hires."<br><span>— Musisi Daniel, Class of 2016</span></p>
+    </div>
+  </section>
+
+  <!-- RIGHT: login / register form -->
+  <section class="login-form-side">
+    <div class="login-form-wrap">
+
+      <div class="role-tabs" role="tablist" aria-label="Alumni access">
+        <button class="role-tab active" data-mode="login" role="tab" aria-selected="true">Log In</button>
+        <button class="role-tab" data-mode="register" role="tab" aria-selected="false">Register</button>
+      </div>
+
+      <h2 class="login-title" id="alumniTitle">Alumni Login</h2>
+      <p class="login-sub" id="alumniSub">Enter your alumni ID or email and password to access your profile.</p>
+
+      <form id="alumniForm" class="login-form" novalidate>
+        <div class="field" id="alumniNameField" hidden>
+          <label for="alumniName">Full name *</label>
+          <input type="text" id="alumniName" name="alumniName" autocomplete="name">
+        </div>
+        <div class="field" id="alumniGradField" hidden>
+          <label for="alumniGrad">Graduation year *</label>
+          <input type="text" id="alumniGrad" name="alumniGrad" placeholder="e.g. 2019">
+        </div>
+        <div class="field">
+          <label for="alumniId" id="alumniIdLabel">Alumni ID or email *</label>
+          <input type="text" id="alumniId" name="alumniId" required autocomplete="username">
+        </div>
+        <div class="field">
+          <label for="alumniPass">Password *</label>
+          <div class="password-wrap">
+            <input type="password" id="alumniPass" name="alumniPass" required autocomplete="current-password">
+            <button type="button" class="password-toggle" id="alumniPasswordToggle" aria-label="Show password">
+              <svg viewBox="0 0 24 24"><path d="M12 5c-5 0-9.3 3.1-11 7 1.7 3.9 6 7 11 7s9.3-3.1 11-7c-1.7-3.9-6-7-11-7zm0 11.5A4.5 4.5 0 1 1 12 7.5a4.5 4.5 0 0 1 0 9zm0-7.2a2.7 2.7 0 1 0 0 5.4 2.7 2.7 0 0 0 0-5.4z"/></svg>
+            </button>
+          </div>
+        </div>
+        <div class="login-row" id="alumniRememberRow">
+          <label class="radio-opt"><input type="checkbox"> Remember me</label>
+          <a href="#" id="alumniForgotLink" class="login-forgot">Forgot password?</a>
+        </div>
+        <button type="submit" class="btn btn-orange btn-lg" style="width:100%;justify-content:center;" id="alumniSubmit">Log In →</button>
+      </form>
+
+      <div class="login-notice" id="alumniNotice" hidden>
+        <strong>This is a design preview.</strong> The live alumni system isn't connected yet — once GTheo's backend is hosted, this form will authenticate real accounts. For alumni relations right now, email
+        <a href="mailto:gaditeophilus0@gmail.com">gaditeophilus0@gmail.com</a>.
+      </div>
+
+      <p class="login-apply-note">Not registered yet? Switch to <strong>Register</strong> above, or read <a href="alumni-stories.html">alumni stories</a> first.</p>
+    </div>
+  </section>
+</main>
+
+<script>
+const alumniCopy = {
+  login: { title: 'Alumni Login', sub: 'Enter your alumni ID or email and password to access your profile.', idLabel: 'Alumni ID or email *', submit: 'Log In →' },
+  register: { title: 'Register as Alumni', sub: 'Create your alumni profile to join the network.', idLabel: 'Email address *', submit: 'Create Account →' }
+};
+document.querySelectorAll('.role-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.role-tab').forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
+    tab.classList.add('active');
+    tab.setAttribute('aria-selected','true');
+    const mode = tab.dataset.mode;
+    const copy = alumniCopy[mode];
+    document.getElementById('alumniTitle').textContent = copy.title;
+    document.getElementById('alumniSub').textContent = copy.sub;
+    document.getElementById('alumniIdLabel').textContent = copy.idLabel;
+    document.getElementById('alumniSubmit').textContent = copy.submit;
+    const isRegister = mode === 'register';
+    document.getElementById('alumniNameField').hidden = !isRegister;
+    document.getElementById('alumniGradField').hidden = !isRegister;
+    document.getElementById('alumniRememberRow').style.display = isRegister ? 'none' : 'flex';
+  });
+});
+
+const alumniPass = document.getElementById('alumniPass');
+document.getElementById('alumniPasswordToggle').addEventListener('click', function(){
+  const isPass = alumniPass.type === 'password';
+  alumniPass.type = isPass ? 'text' : 'password';
+  this.setAttribute('aria-label', isPass ? 'Hide password' : 'Show password');
+});
+
+document.getElementById('alumniForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  document.getElementById('alumniNotice').hidden = false;
+  document.getElementById('alumniNotice').scrollIntoView({ behavior:'smooth', block:'nearest' });
+});
+document.getElementById('alumniForgotLink').addEventListener('click', function(e){
+  e.preventDefault();
+  document.getElementById('alumniNotice').hidden = false;
+});
+</script>
+
+</body>
+</html>
